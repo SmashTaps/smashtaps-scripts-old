@@ -18,9 +18,6 @@ jobs:
           # Defaults to the user or organization that owns the workflow file
           scope: '@smashtaps'
       - run: yarn
-      - run: |
-          echo @smashtaps:https://npm.pkg.github.com/ > .npmrc
-          echo '//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}' >> .npmrc
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
