@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Set of opinionated tools and extensions that will improve the DX of engineers.",
   "type": "commonjs",
+  "private": false,
   "bin": {
     "smashtaps-scripts": "./bin/smashtaps-scripts.js"
   },
@@ -11,7 +12,7 @@
     "format": "prettier --check",
     "format:fix": "prettier --write",
     "format:fix:all": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}'",
-    "postinstall": "husky install",
+    "postinstall": "is-ci || husky install",
     "prepack": "pinst --disable",
     "postpack": "pinst --disable",
     "lint": "eslint .",
@@ -40,25 +41,26 @@
   "homepage": "https://github.com/SmashTaps/smashtaps-scripts#readme",
   "dependencies": {
     "chalk": "4.0.0",
+    "is-ci": "^3.0.1",
     "prompt-sync": "^4.2.0"
   },
   "devDependencies": {
-    "prettier": "2.7.1",
-    "eslint-config-prettier": "8.5.0",
-    "eslint-plugin-prettier": "4.2.1",
-    "husky": "8.0.1",
-    "pinst": "3.0.0",
-    "eslint": "8.24.0",
+    "@commitlint/cli": "17.1.2",
+    "@commitlint/config-conventional": "17.1.0",
+    "@digitalroute/cz-conventional-changelog-for-jira": "7.4.1",
     "@typescript-eslint/eslint-plugin": "5.0.0",
-    "eslint-plugin-promise": "6.0.0",
-    "eslint-plugin-react": "7.31.8",
+    "commitizen": "4.2.5",
+    "eslint": "8.24.0",
+    "eslint-config-prettier": "8.5.0",
     "eslint-config-standard-with-typescript": "^23.0.0",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-promise": "6.0.0",
+    "eslint-plugin-react": "7.31.8",
+    "husky": "8.0.1",
     "lint-staged": "13.0.3",
-    "@commitlint/config-conventional": "17.1.0",
-    "@commitlint/cli": "17.1.2",
-    "commitizen": "4.2.5",
-    "@digitalroute/cz-conventional-changelog-for-jira": "7.4.1"
+    "pinst": "3.0.0",
+    "prettier": "2.7.1"
   }
 }
