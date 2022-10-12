@@ -1,6 +1,6 @@
 {
   "name": "smashtaps-scripts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Set of opinionated tools and extensions that will improve the DX of engineers.",
   "type": "commonjs",
   "private": false,
@@ -12,7 +12,7 @@
     "format": "prettier --check",
     "format:fix": "prettier --write",
     "format:fix:all": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}'",
-    "postinstall": "is-ci || husky install",
+    "_postinstall": "is-ci || husky install",
     "prepack": "is-ci || pinst --disable",
     "postpack": "is-ci || pinst --disable",
     "lint": "eslint .",
