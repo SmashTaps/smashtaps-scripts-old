@@ -80,20 +80,8 @@ async function init() {
     }
 
     const installPackages = async function () {
-      await pkg.update(constants.PACKAGE_KEYS.SCRIPTS, function (value) {
-        return {
-          ...value,
-          postinstall: content.removeFromString(value.postinstall || '', 'node ./index.js', '&&'),
-        };
-      });
       await command.run('yarn install', function (event, data, code) {
         log.stream(['smashtaps-scripts', 'pre-init-chores', 'yarn', 'install'], event, data, code);
-      });
-      await pkg.update(constants.PACKAGE_KEYS.SCRIPTS, function (value) {
-        return {
-          ...value,
-          postinstall: content.getUniqueString(value.postinstall || '', 'node ./index.js', '&&'),
-        };
       });
     };
 
