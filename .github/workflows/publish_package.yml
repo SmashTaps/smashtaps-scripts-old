@@ -16,7 +16,8 @@ jobs:
           node-version: '16.x'
           registry-url: 'https://npm.pkg.github.com'
           # Defaults to the user or organization that owns the workflow file
-          scope: '@smashtaps'
+          always-auth: true
+          scope: '@SmashTaps'
       - run: yarn install --frozen-lockfile --production
       - run: yarn publish
         env:
