@@ -47,16 +47,16 @@ module.exports = {
           return {
             ...value,
             ...(value?.postinstall
-              ? { postinstall: content.getUniqueString(value.postinstall, 'husky install', '&&') }
-              : { postinstall: 'husky install' }),
+              ? { postinstall: content.getUniqueString(value.postinstall, 'is-ci || husky install', '&&') }
+              : { postinstall: 'is-ci || husky install' }),
             ...(value?.prepack
-              ? { prepack: content.getUniqueString(value.prepack, 'pinst --disable', '&&', 'prepend') }
-              : { prepack: 'pinst --disable' }),
+              ? { prepack: content.getUniqueString(value.prepack, 'is-ci || pinst --disable', '&&', 'prepend') }
+              : { prepack: 'is-ci || pinst --disable' }),
             ...(value?.postpack
               ? {
-                  postpack: content.getUniqueString(value.postpack, 'pinst --disable', '&&', 'prepend'),
+                  postpack: content.getUniqueString(value.postpack, 'is-ci || pinst --disable', '&&', 'prepend'),
                 }
-              : { postpack: 'pinst --disable' }),
+              : { postpack: 'is-ci || pinst --disable' }),
           };
         },
         moduleConfig
