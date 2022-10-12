@@ -11,7 +11,7 @@
     "format": "prettier --check",
     "format:fix": "prettier --write",
     "format:fix:all": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}'",
-    "postinstall": "husky install && node ./index.js",
+    "postinstall": "husky install",
     "prepack": "pinst --disable",
     "postpack": "pinst --disable",
     "lint": "eslint .",
@@ -35,9 +35,11 @@
     "url": "https://github.com/SmashTaps/smashtaps-scripts/issues"
   },
   "homepage": "https://github.com/SmashTaps/smashtaps-scripts#readme",
-  "devDependencies": {
+  "dependencies": {
     "chalk": "4.0.0",
-    "prompt-sync": "^4.2.0",
+    "prompt-sync": "^4.2.0"
+  },
+  "devDependencies": {
     "prettier": "2.7.1",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.2.1",

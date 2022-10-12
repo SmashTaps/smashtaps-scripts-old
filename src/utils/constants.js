@@ -1,6 +1,6 @@
 const path = require('path');
 
-const root = require.main.paths[1].split('node_modules')[0];
+const root = process.env.PWD;
 
 module.exports = Object.freeze({
   FILE_PATHS: {

@@ -27,7 +27,7 @@ function shouldInstall(key, updatedConfig) {
 
 async function init() {
   const updatedConfig = await getUpdatedConfig();
-  console.log(updatedConfig);
+
   if (!isInstallRequired(updatedConfig)) {
     return true;
   }
