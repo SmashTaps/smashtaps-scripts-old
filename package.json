@@ -1,6 +1,6 @@
 {
-  "name": "smashtaps-scripts",
-  "version": "1.0.2",
+  "name": "@smashtaps/smashtaps-scripts",
+  "version": "1.0.3",
   "description": "Set of opinionated tools and extensions that will improve the DX of engineers.",
   "type": "commonjs",
   "private": false,
@@ -11,7 +11,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --check",
     "format:fix": "prettier --write",
-    "format:fix:all": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}'"
+    "format:fix:all": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}'",
+    "postinstall": "is-ci || husky install && node ./index.js",
+    "prepack": "is-ci || pinst --disable",
+    "postpack": "is-ci || pinst --disable",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix",
+    "commit": "git-cz"
   },
   "repository": {
     "type": "git",
