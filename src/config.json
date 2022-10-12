@@ -1,0 +1,51 @@
+{
+  "eslint": {
+    "enabled": true,
+    "install": {
+      "devDependencies": true,
+      "scripts": true,
+      "configs": true,
+      "files": true
+    }
+  },
+  "prettier": {
+    "enabled": true,
+    "install": {
+      "devDependencies": true,
+      "scripts": true,
+      "configs": true,
+      "files": true
+    }
+  },
+  "husky": {
+    "enabled": true,
+    "install": {
+      "devDependencies": true,
+      "scripts": true,
+      "files": true
+    }
+  },
+  "lint-staged": {
+    "enabled": true,
+    "install": {
+      "devDependencies": true,
+      "files": true
+    }
+  },
+  "commitlint": {
+    "enabled": true,
+    "install": {
+      "devDependencies": true,
+      "files": true
+    }
+  },
+  "commitizen": {
+    "enabled": true,
+    "install": {
+      "devDependencies": true,
+      "scripts": true,
+      "configs": true,
+      "files": true
+    }
+  }
+}
