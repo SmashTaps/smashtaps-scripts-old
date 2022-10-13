@@ -15,8 +15,7 @@ jobs:
         with:
           node-version: '16.x'
           registry-url: 'https://npm.pkg.github.com'
-          always-auth: true
-      - run: yarn install --frozen-lockfile
-      - run: yarn publish --access public
+      - run: npm ci
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
