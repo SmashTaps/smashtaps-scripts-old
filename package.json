@@ -1,5 +1,5 @@
 {
-  "name": "@SmashTaps/smashtaps-scripts",
+  "name": "@smashtaps/smashtaps-scripts",
   "version": "1.0.3",
   "description": "Set of opinionated tools and extensions that will improve the DX of engineers.",
   "type": "commonjs",
