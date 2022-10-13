@@ -1,7 +1,5 @@
 name: Publish package to GitHub Packages
-on:
-  release:
-    types: [created]
+on: workflow_dispatch
 jobs:
   build:
     runs-on: ubuntu-latest 
@@ -9,16 +7,17 @@ jobs:
       contents: read
       packages: write 
     steps:
+      - name: Checkout
       - uses: actions/checkout@v3
-      # Setup .npmrc file to publish to GitHub Packages
+      
+      - name: Installing node and yarn
       - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
           registry-url: 'https://npm.pkg.github.com'
-          # Defaults to the user or organization that owns the workflow file
           always-auth: true
-          scope: '@SmashTaps'
-      - run: yarn install --frozen-lockfile --production
-      - run: yarn publish
+      - name: installing package
+      - run: yarn install --frozen-lockfile
+      - run: yarn publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
