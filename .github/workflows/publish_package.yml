@@ -20,8 +20,8 @@ jobs:
       - name: Create a .npmrc file for the github private repository
         uses: FerLuisxd/create-npmrc@4c563f22b3905e838afb06380d2f9d52480de86c
         with:
-          org_name: '@smashtaps'
-          auth_token: '$NODE_AUTH_TOKEN'
+          org_name: 'smashtaps'
+          auth_token: '${{secrets.GITHUB_TOKEN}}'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
