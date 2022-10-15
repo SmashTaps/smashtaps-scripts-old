@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '16.x'
           registry-url: 'https://npm.pkg.github.com'
-      - run: npx install
+
       - name: 'Deploy package'
         run: |
           npx ci
