@@ -1,7 +1,7 @@
 const path = require('path');
 
 const constants = require('../../utils/constants');
-const { log, content } = require('../../utils');
+const { log, content, getPackager } = require('../../utils');
 const { install, run } = require('../../tasks');
 
 const MODULE_NAME = 'husky';
@@ -67,8 +67,14 @@ module.exports = {
   },
   init: async function (moduleConfig, globalConfig) {
     try {
-      await run.command(MODULE_NAME, 'init', 'yarn husky install', moduleConfig);
-      await run.command(MODULE_NAME, 'init', 'yarn husky add .husky/pre-commit "yarn lint"', moduleConfig);
+      const packager = getPackager();
+      await run.command(MODULE_NAME, 'init', `${packager} husky install`, moduleConfig);
+      await run.command(
+        MODULE_NAME,
+        'init',
+        `${packager} husky add .husky/pre-commit "${packager} lint"`,
+        moduleConfig
+      );
 
       const files = [
         {
@@ -82,14 +88,14 @@ module.exports = {
             let _content = content;
 
             if (globalConfig['lint-staged'].enabled) {
-              _content += '\n\nyarn lint-staged';
+              _content += `\n\n${packager} lint-staged`;
             } else {
               if (globalConfig.eslint.enabled) {
-                _content += '\n\nyarn format:fix';
+                _content += `\n\n${packager} format:fix`;
               }
 
               if (globalConfig.prettier.enabled) {
-                _content += '\n\nyarn lint:fix';
+                _content += `\n\n${packager} lint:fix`;
               }
             }
 
@@ -104,7 +110,7 @@ module.exports = {
             src: FILE_PATHS.COMMIT_MSG.src,
             dest: FILE_PATHS.COMMIT_MSG.dest,
             onCopy: function (content) {
-              return `${content}\n\nyarn commitlint --edit $1`;
+              return `${content}\n\n${packager} commitlint --edit $1`;
             },
           },
           {

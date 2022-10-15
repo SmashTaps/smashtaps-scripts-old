@@ -10,16 +10,13 @@ jobs:
       - name: 'Checkout'
         uses: actions/checkout@v3
 
-      - name: 'Installing node and yarn'
+      - name: 'Installing node and npm'
         uses: actions/setup-node@v3
         with:
           node-version: '16.x'
           registry-url: 'https://npm.pkg.github.com'
-      - run: yarn install --frozen-lockfile
-      - name: Set deployment token
+      - run: npx install
+      - name: 'Deploy package'
         run: |
-          yarn config set npmScopes.smashtaps.npmRegistryServer "https://npm.pkg.github.com"
-          yarn config set npmScopes.smashtaps.npmAlwaysAuth true
-          yarn config set npmScopes.smashtaps.npmAuthToken "${NODE_AUTH_TOKEN}"
-      - name: publishing package
-        run: yarn publish
+          npx ci
+          npx publish

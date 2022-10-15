@@ -1,5 +1,5 @@
 const path = require('path');
-const { tasks, log, command, deep, file, pkg, content } = require('./utils');
+const { tasks, log, command, deep, file, getPackager } = require('./utils');
 const config = require('./config');
 const constants = require('./utils/constants');
 
@@ -26,6 +26,7 @@ function shouldInstall(key, updatedConfig) {
 }
 
 async function init() {
+  const packager = getPackager();
   const updatedConfig = await getUpdatedConfig();
 
   if (!isInstallRequired(updatedConfig)) {
@@ -80,9 +81,13 @@ async function init() {
     }
 
     const installPackages = async function () {
-      await command.run('yarn install', function (event, data, code) {
-        log.stream(['smashtaps-scripts', 'pre-init-chores', 'yarn', 'install'], event, data, code);
-      });
+      try {
+        await command.run(`${packager} install`, function (event, data, code) {
+          log.stream(['smashtaps-scripts', 'pre-init-chores', packager, 'install'], event, data, code);
+        });
+      } catch (error) {
+        throw log.error('smashtaps-scripts:installing packages', error);
+      }
     };
 
     tasksList.run(installPackages).catch((e) => console.log(log.error('smashtaps-scripts', e).message));

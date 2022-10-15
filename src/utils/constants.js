@@ -7,6 +7,7 @@ module.exports = Object.freeze({
     ROOT: root,
     PACKAGE: path.join(root, 'package.json'),
     HUSKY: path.join(root, '/.husky'),
+    YARN: path.join(root, '/yarn.lock'),
   },
   FILE_TYPES: {
     JSON: 'json',

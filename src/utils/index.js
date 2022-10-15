@@ -5,6 +5,7 @@ const { file } = require('./functions/file');
 const { log } = require('./functions/log');
 const { package: pkg } = require('./functions/package');
 const { tasks } = require('./functions/tasks');
+const getPackager = require('./functions/getPackager');
 
 module.exports = {
   command,
@@ -14,4 +15,5 @@ module.exports = {
   log,
   pkg,
   tasks,
+  getPackager,
 };

@@ -15,7 +15,7 @@ const FILE_PATHS = {
 module.exports = {
   MODULE_NAME,
 
-  prepare: async function (moduleConfig, globalConfig) {
+  prepare: async function (moduleConfig) {
     try {
       await install.dependencies(
         MODULE_NAME,

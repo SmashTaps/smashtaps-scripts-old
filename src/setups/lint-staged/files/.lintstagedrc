@@ -1,4 +1,0 @@
-{
-  "*.{css,less,scss,html,json,jsx,js}": "yarn run format:fix",
-  "*.{jsx, js, ts, tsx}": "yarn run lint:fix"
-}

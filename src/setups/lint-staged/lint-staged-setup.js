@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const constants = require('../../utils/constants');
-const { log } = require('../../utils');
+const { log, getPackager } = require('../../utils');
 const { install } = require('../../tasks');
 
 const MODULE_NAME = 'lint-staged';
@@ -15,8 +15,9 @@ const FILE_PATHS = {
 
 module.exports = {
   MODULE_NAME,
-  prepare: async function (moduleConfig) {
+  prepare: async function (moduleConfig, globalConfig) {
     try {
+      const packager = getPackager();
       await install.dependencies(
         MODULE_NAME,
         'prepare',
@@ -35,6 +36,22 @@ module.exports = {
           {
             src: FILE_PATHS.LINT_STAGED_RC.src,
             dest: FILE_PATHS.LINT_STAGED_RC.dest,
+            onCopy: function () {
+              const json = {
+                ...(globalConfig.prettier?.enabled
+                  ? {
+                      '*.{css,less,scss,html,json,jsx,js}': `${packager} run format:fix`,
+                    }
+                  : {}),
+                ...(globalConfig.eslint?.enabled
+                  ? {
+                      '*.{jsx, js, ts, tsx}': `${packager} run lint:fix`,
+                    }
+                  : {}),
+              };
+
+              return JSON.stringify(json, null, 2);
+            },
           },
         ],
         moduleConfig
