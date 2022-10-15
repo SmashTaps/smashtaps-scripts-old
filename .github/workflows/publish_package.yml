@@ -27,6 +27,7 @@ jobs:
 
       - name: 'Deploy package'
         run: |
+          cat .npmrc
           npx ci --ignore-scripts
           npx publish
         env:
