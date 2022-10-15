@@ -21,7 +21,7 @@ jobs:
         uses: FerLuisxd/create-npmrc@4
         with:
           org_name: '@smashtaps'
-          auth_token: '{NODE_AUTH_TOKEN}'
+          auth_token: '$NODE_AUTH_TOKEN'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
