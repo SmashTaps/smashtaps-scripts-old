@@ -17,9 +17,17 @@ jobs:
           node-version: '16.x'
           registry-url: 'https://npm.pkg.github.com'
 
+      - name: Create a .npmrc file for the github private repository
+        uses: FerLuisxd/create-npmrc@4
+        with:
+          org_name: '@smashtaps'
+          auth_token: '{NODE_AUTH_TOKEN}'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: 'Deploy package'
         run: |
-          npx ci
+          npx ci --ignore-scripts
           npx publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
