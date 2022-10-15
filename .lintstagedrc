@@ -1,4 +1,4 @@
 {
-  "*.{css,less,scss,html,json,jsx,js}": "npx run format:fix",
-  "*.{jsx, js, ts, tsx}": "npx run lint:fix"
+  "*.{css,less,scss,html,json,jsx,js}": "npx prettier --fix",
+  "*.{jsx, js, ts, tsx}": "npx run eslint --fix"
 }

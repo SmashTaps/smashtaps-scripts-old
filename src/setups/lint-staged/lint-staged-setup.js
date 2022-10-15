@@ -40,12 +40,12 @@ module.exports = {
               const json = {
                 ...(globalConfig.prettier?.enabled
                   ? {
-                      '*.{css,less,scss,html,json,jsx,js}': `${packager} run format:fix`,
+                      '*.{css,less,scss,html,json,jsx,js}': `${packager} prettier --fix`,
                     }
                   : {}),
                 ...(globalConfig.eslint?.enabled
                   ? {
-                      '*.{jsx, js, ts, tsx}': `${packager} run lint:fix`,
+                      '*.{jsx, js, ts, tsx}': `${packager} run eslint --fix`,
                     }
                   : {}),
               };
