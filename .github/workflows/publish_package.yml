@@ -18,7 +18,7 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
 
       - name: Create a .npmrc file for the github private repository
-        uses: FerLuisxd/create-npmrc@4
+        uses: FerLuisxd/create-npmrc@4c563f22b3905e838afb06380d2f9d52480de86c
         with:
           org_name: '@smashtaps'
           auth_token: '$NODE_AUTH_TOKEN'
