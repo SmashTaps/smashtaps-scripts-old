@@ -19,8 +19,8 @@ jobs:
 
       - name: 'Deploy package'
         run: |
-          npx ci --ignore-scripts
-          npx npm-cli-login -u roshanind -p ${{secrets.GITHUB_TOKEN}} -e roshan@smashtaps.com -s @smashtaps -r https://npm.pkg.github.com
-          npx publish
+          npm ci --ignore-scripts
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
