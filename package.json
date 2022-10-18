@@ -11,9 +11,6 @@
     "format": "prettier --check",
     "format:fix": "prettier --write",
     "format:fix:all": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}'",
-    "postinstall": "is-ci || husky install",
-    "prepack": "is-ci || pinst --disable",
-    "postpack": "is-ci || pinst --disable",
     "lint": "eslint .",
     "lint:fix": "eslint --fix",
     "commit": "git-cz"
