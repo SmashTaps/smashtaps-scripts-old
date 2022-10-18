@@ -22,9 +22,6 @@
     "type": "git",
     "url": "git+https://github.com/SmashTaps/smashtaps-scripts.git"
   },
-  "publishConfig": {
-    "@smashtaps:registry": "https://npm.pkg.github.com"
-  },
   "keywords": [
     "DX",
     "DEV",
